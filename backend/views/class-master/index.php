@@ -11,23 +11,26 @@ $this->title = 'Class Masters';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="class-master-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="box box-primary">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <div class="box-header">
     <p>
         <?= Html::a('Create Class Master', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+        </div>
+    <div class="box box-body">
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+           // 'id',
             'name',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
+        </div>
+    </div>
