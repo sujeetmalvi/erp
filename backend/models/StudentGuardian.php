@@ -5,19 +5,20 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "student_catagory".
+ * This is the model class for table "student_guardian".
  *
  * @property integer $id
- * @property string $name
+ * @property integer $gid
+ * @property integer $sid
  */
-class StudentCatagory extends \yii\db\ActiveRecord
+class StudentGuardian extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'student_catagory';
+        return 'student_guardian';
     }
 
     /**
@@ -26,9 +27,8 @@ class StudentCatagory extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['name'], 'string', 'max' => 90],
-            [['name'], 'unique'],
+            [['gid', 'sid'], 'required'],
+            [['gid', 'sid'], 'integer'],
         ];
     }
 
@@ -39,7 +39,8 @@ class StudentCatagory extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'gid' => 'Gid',
+            'sid' => 'Sid',
         ];
     }
 }

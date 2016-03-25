@@ -5,21 +5,20 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "subject_type".
+ * This is the model class for table "student_additional_fields".
  *
  * @property integer $id
  * @property string $name
- *
- * @property Subject[] $subjects
+ * @property integer $status
  */
-class SubjectType extends \yii\db\ActiveRecord
+class StudentAdditionalFields extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'subject_type';
+        return 'student_additional_fields';
     }
 
     /**
@@ -28,9 +27,8 @@ class SubjectType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['status'], 'integer'],
             [['name'], 'string', 'max' => 255],
-            [['name'], 'unique'],
         ];
     }
 
@@ -42,14 +40,7 @@ class SubjectType extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'status' => 'Status',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getSubjects()
-    {
-        return $this->hasMany(Subject::className(), ['type' => 'id']);
     }
 }
